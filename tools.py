@@ -43,6 +43,14 @@ def random_password(minlen=5, separator='-'):
 
     return password
 
+def check_executable(path):
+    """make a script or binary executable"""
+    if os.access(path, os.X_OK):
+        return True
+    mode = os.stat(path).st_mode
+    mode |= (mode & 0o444) >> 2    # copy R bits to X
+    os.chmod(path, mode)
+    return os.access(path, os.X_OK)
 
 def convert_dicom_to_nifti(folder):
     """using dcm2nii, convert folder.  fallback using dicom2nifti package,
@@ -57,23 +65,28 @@ def convert_dicom_to_nifti(folder):
 
     if dcm2nii_binary:
         try:
-            print('converting using dcm2nii')
             res = subprocess.check_output([dcm2nii_binary, folder])
             convert_success = True
-        except Exception:   
+
+        except Exception as e:
+            print(f'cant use dcm2nii, please check error: {repr(e)}')
             convert_success = False
+
         
-    if convert_success or not dcm2nii_binary:
+    if not convert_success or not dcm2nii_binary:
         # conversion failes, fallback to dicom2nifti
-        print('converting using dicom2nifti, fallback option used')
+
+        print('using fallback option dicom2nifti')
         dicom2nifti.convert_directory(folder, folder)
 
 def get_mprage_nifti(folder):
     """return largest nifti in the folder that has MPRAGE in the file name"""
     files = os.listdir(folder)
-    nifti = [f for f in files if '.nii' in files]
+
+    nifti = [f for f in files if '.nii' in f]
     mprages = [os.path.join(folder, f) for f in nifti if 'mprage' in f.lower()]
-    mprages = sorted(mprages, key=lambda x:os.path.getsize(mprages))
+
+    mprages = sorted(mprages, key=lambda x:os.path.getsize(x))
     if len(mprages)==0: return False
     return mprages[-1]
 
@@ -120,6 +133,23 @@ def share_file_with_password(username, password, file_path, share_password, expi
         return response.text  # Or parse the XML response as needed
     else:
         return f"Error: {response.status_code}, {response.text}"
+
+def check_create_folder(username, password, baseurl, remote_path):
+    # Set up authentication and headers
+    session = requests.Session()
+    session.auth = (username, password)
+    
+    url = f"{baseurl}/remote.php/webdav/{remote_path}"
+    print(f'check if {url} exists')
+    # Check if folder exists
+    check_response = session.request("PROPFIND", url)
+    if not 200 <= check_response.status_code < 300:
+        # Folder doesn't exist, create it
+        create_response = session.request("MKCOL", url)
+        if create_response.status_code == 201:
+            print(f"Folder {remote_path} created successfully")
+        else:
+            raise Exception(f'remote folder {remote_path} does not exist and could not be created.')
 
 def upload_file_to_nextcloud(username, password, local_file_path, baseurl, remote_file_path):
     # Construct the full WebDAV URL
