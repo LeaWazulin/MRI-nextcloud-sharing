@@ -140,16 +140,19 @@ def check_create_folder(username, password, baseurl, remote_path):
     session.auth = (username, password)
     
     url = f"{baseurl}/remote.php/webdav/{remote_path}"
-    print(f'check if {url} exists')
+    print(f'check if {url} exists ...', end='')
     # Check if folder exists
     check_response = session.request("PROPFIND", url)
     if not 200 <= check_response.status_code < 300:
+        print('nope.')
         # Folder doesn't exist, create it
         create_response = session.request("MKCOL", url)
         if create_response.status_code == 201:
-            print(f"Folder {remote_path} created successfully")
+            print(f"\nFolder {remote_path} created successfully")
         else:
-            raise Exception(f'remote folder {remote_path} does not exist and could not be created.')
+            raise Exception(f'\nremote folder {remote_path} does not exist and could not be created.')
+    else:
+        print('yes!')
 
 def upload_file_to_nextcloud(username, password, local_file_path, baseurl, remote_file_path):
     # Construct the full WebDAV URL

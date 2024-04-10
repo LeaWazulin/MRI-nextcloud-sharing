@@ -60,7 +60,7 @@ if __name__=='__main__':
 
     # Zip the files with the password
     xlsx = os.path.abspath(os.path.join(main_folder, 'share-list.xlsx'))
-    if os.path.isfile(xlsx):
+    if not os.path.isfile(xlsx):
         print('creating new share-list.xlsx')
         df = pd.DataFrame(columns=['url', 'password', 'expire'])
     else:
