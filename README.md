@@ -1,5 +1,7 @@
 # MRI-nextcloud-sharing
 
+According to DGSVO §15, every participant has the right to request their data that was recorded about them. That includes research MRIs.
+
 Share password-protected MRI images via Nextcloud. 
 Uploads NIFTI files to Nextcloud zipped with a random password.
 You send the link to the NIFTI via mail and the password via a secure second channel e.g. WhatsApp or Signal.
@@ -15,7 +17,7 @@ then enter your credentials into `credentials.json`
 ```json
    {"username": "username",         # user name for nextcloud
     "password": "password",         # password for the user
-    "remote_path": "MRI-share",     # folder on nextcloud in which the files are uploaded. Needs to exist already.
+    "remote_path": "MRI-share",     # folder on nextcloud in which the files are uploaded.
     "expiration_days": 21,          # delete share after this time
     "include_mricron": true,        # include a program to view NIFTI files (Windows only)
     "nextcloud_baseurl": "https://cloud.server.de"  # server URL
@@ -28,3 +30,5 @@ then enter your credentials into `credentials.json`
 3. A `share-list.xlsx` will be created containing all the links and passwords.
 4. If you need to re-share a file, simply delete the row of the participant from the excel list
 5. Send the link to the participant via email. Send the password via a separate, secure channel (i.e. WhatsApp, Signal, iMessage or snail mail).
+
+Recommendation: In your mail, make sure to mention that this MRI was not part of a diagnostic procedure and should not be treated as such. 
