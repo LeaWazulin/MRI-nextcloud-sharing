@@ -2,7 +2,7 @@
 
 According to DGSVO §15, every participant has the right to request their data that was recorded about them. That includes research MRIs.
 
-Share password-protected MRI images via Nextcloud. 
+This repo contains the workshops to share password-protected MRI images via Nextcloud. 
 Uploads NIFTI files to Nextcloud zipped with a random password.
 You send the link to the NIFTI via mail and the password via a secure second channel e.g. WhatsApp or Signal.
 
