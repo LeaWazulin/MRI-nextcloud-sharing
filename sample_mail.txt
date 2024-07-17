@@ -1,0 +1,21 @@
+Liebe:r Proband:in,
+
+ 
+Vielen Dank für deine Teilnahme! Hier findest du deine MRT-Bilder als Zip-Datei:
+
+https://LINK-TO-FILE
+
+
+Das Passwort wird dir über einen separaten, sicheren Kanal (z.B. WhatsApp oder Signal) zugesandt. Das Passwort gilt sowohl für die URL als auch für die ZIP-Datei. Der Link wird innerhalb von drei Wochen ablaufen, also lade die Dateien besser jetzt auf deinen PC herunter, auch wenn du sie im Moment nicht ansehen möchtest.
+
+
+Wie Du dir die Dateien anzeigen lassen kannst:
+
+    Wenn du Windows hast, gibt es ein Programm innerhalb der ZIP-Datei (MRICron.exe), das die MRT-Scans öffnen kann.
+    Wenn du einen Mac verwendest, kannst du MRICro aus dem App Store herunterladen, um die Datei anzuzeigen.
+    Wenn du Linux verwendest, müsstest du selbst ein Program suchen, dass NIFTI-Dateien anzeigen kann.
+
+Wenn du noch irgendwelche Fragen hast, komme gerne auf mich/uns zu.
+
+Viele Grüße,
+XY

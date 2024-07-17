@@ -10,9 +10,7 @@ You send the link to the NIFTI via mail and the password via a secure second cha
 
 - clone this repository to your local machine
 - install the following via pip:  `pip install dicom2nifti wordfreq tqdm pyminizip` or use `pip install -r requirements.txt`
-  
-  
-  
+
   then enter your credentials into `credentials.json`
 
 PS: Best practice is to create an API [app password](https://help.nextcloud.com/t/where-to-create-app-password/157454/2) in the Nextcloud settings under "security". Don't store your actual password in plain text on disc.
@@ -41,10 +39,7 @@ The script expects the the DICOMS to be in subfolders of a main folder, with eac
 │   │           ...
 │   └───subj3
 │   │           .....
-
 ```
-
-
 
 ## usage
 
@@ -53,3 +48,5 @@ The script expects the the DICOMS to be in subfolders of a main folder, with eac
 3. A `share-list.xlsx` will be created containing all the links and passwords.
 4. If you need to re-share a file, simply delete the row of the participant from the excel list
 5. Send the link to the participant via email. Send the password via a separate, secure channel (i.e. WhatsApp, Signal, iMessage or snail mail).
+
+There is a sample mail available here: [mail template](https://github.com/CIMH-Clinical-Psychology/MRI-nextcloud-sharing/blob/main/sample_mail.txt)
