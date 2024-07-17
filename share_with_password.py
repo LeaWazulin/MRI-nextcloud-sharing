@@ -87,7 +87,7 @@ if __name__=='__main__':
         assert (filesize:=os.path.getsize(mprage))>6*1024**2, f'[{subj}] file too small {filesize=}'
 
         # create a random, non-reproducible password
-        share_password = random_password()
+        share_password = 'ZI-J5-' + random_password(5, nwords=2)
 
         # zip the MRI together with the executable and the ini file
         print(f'[{subj}] compressing')
@@ -106,7 +106,7 @@ if __name__=='__main__':
         remote_file_path = f'{remote_path}/{subj}.zip'
 
         res = upload_file_to_nextcloud(username, password, output_zip, baseurl, remote_file_path)
-        assert res=='File uploaded successfully'
+        assert res=='File uploaded successfully' , 'There was an error, here is the message: {res}'
 
         # now share the file with password and expiry
         print(f'[{subj}] getting url')
@@ -114,7 +114,8 @@ if __name__=='__main__':
 
         expire = calculate_expire_date(days=expire_days)
         res = share_file_with_password(username, password, remote_file_path, share_password, expire, baseurl)
-        assert not 'Error: ' in res
+        assert not 'Error: ' in res, 'There was an error, here is the message: {res}'
+        
         sharing_url = (res.split('<url>')[1]).split('</url>')[0]
 
         df.loc[subj] = [sharing_url, share_password, expire]
