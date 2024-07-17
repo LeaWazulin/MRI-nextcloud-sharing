@@ -13,7 +13,7 @@ You send the link to the NIFTI via mail and the password via a secure second cha
 
   then enter your credentials into `credentials.json`
 
-PS: Best practice is to create an API [app password](https://help.nextcloud.com/t/where-to-create-app-password/157454/2) in the Nextcloud settings under "security". Don't store your actual password in plain text on disc.
+PS: Best practice is to create an API [app password](https://help.nextcloud.com/t/where-to-create-app-password/157454/2) in the Nextcloud settings under "security". Don't store your actual user password in plain text on disc, only the app password.
 
 ```json
    {"username": "username",         # user name for nextcloud
