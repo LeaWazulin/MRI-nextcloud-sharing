@@ -36,10 +36,10 @@ def random_password(minlen=5, nwords=3, separator='-'):
     wordlist = [word for word in wordlist if len(word)>minlen and not "'" in word]
 
     # Choose three random words from the list
-    chosen_words = random.sample(wordlist, nwords)
+    chosen_words = [word.title() for word in random.sample(wordlist, nwords)]
 
     # Create the password by joining the chosen words with the separator
-    password = separator.join(chosen_words)
+    password = separator.join(chosen_words) + f'-{datetime.now().year}'
 
     return password
 
