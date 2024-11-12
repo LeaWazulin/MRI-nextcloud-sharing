@@ -22,7 +22,7 @@ from datetime import datetime, timedelta
 
 
 
-def random_password(minlen=5, nwords=3, separator='-'):
+def random_password(minlen=5, nwords=2, separator='-'):
     """
     Generate a reproducible random password consisting of three random words
     based on an input string.
