@@ -7,7 +7,6 @@ Refactored script for sharing BIDS-formatted anatomical NIfTI scans via Nextclou
 """
 
 import sys
-sys.path.append(r'C:\Users\lea.wazulin\AppData\Roaming\Python\Python311\site-packages')
 
 
 import os
