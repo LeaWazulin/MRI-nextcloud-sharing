@@ -13,7 +13,8 @@ You send the link to the NIFTI via mail and the password via a secure second cha
 
   then enter your credentials into `credentials.json`
 
-PS: Best practice is to create an API [app password](https://help.nextcloud.com/t/where-to-create-app-password/157454/2) in the Nextcloud settings under "security". Don't store your actual user password in plain text on disc, only the app password.
+PS: Best practice is to create an API [app password](https://help.nextcloud.com/t/where-to-create-app-password/157454/2) in the Nextcloud settings under "security". 
+Don't store your actual user password in plain text on disc, only the app password.
 
 ```json
    {"username": "firstname.lastname",         # user name for nextcloud
@@ -43,10 +44,12 @@ The script expects BIDS data structure in the form of
 
 ## usage
 
-1. run script via `python share_with_password.py` and select the folder of your BIDs data of all participants (BIDs root folder i.e. the folder above the actual subject folders)
+1. run script via `python share_with_password.py` and select the folder of your
+   BIDs data of all participants (BIDs root folder i.e. the folder above the actual subject folders)
 2. The script will create random passwords and upload the files to nextcloud
 3. A `share-list.xlsx` will be created containing all the links and passwords.
-4. In the end, the script will ask you, in which directory you want to save the share-list.xlsx (orginial BIDs root folder/data structure remains unchanged!)
+4. In the end, the script will ask you, in which directory you want to save
+   the share-list.xlsx (orginial BIDs root folder/data structure remains unchanged!)
 5. If you need to re-share a file, simply delete the row of the participant from the excel list
 6. Send the link to the participant via email. Send the password via a separate, secure channel (i.e. WhatsApp, Signal, iMessage or snail mail).
 
