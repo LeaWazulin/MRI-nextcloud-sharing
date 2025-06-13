@@ -43,10 +43,11 @@ The script expects BIDS data structure in the form of
 
 ## usage
 
-1. run script via `python share_with_password.py` and select the folder of your BIDs data of all participants (i.e. the folder above the actual subject folders)
+1. run script via `python share_with_password.py` and select the folder of your BIDs data of all participants (BIDs root folder i.e. the folder above the actual subject folders)
 2. The script will create random passwords and upload the files to nextcloud
 3. A `share-list.xlsx` will be created containing all the links and passwords.
-4. If you need to re-share a file, simply delete the row of the participant from the excel list
-5. Send the link to the participant via email. Send the password via a separate, secure channel (i.e. WhatsApp, Signal, iMessage or snail mail).
+4. In the end, the script will ask you, in which directory you want to save the share-list.xlsx (orginial BIDs root folder/data structure remains unchanged!)
+5. If you need to re-share a file, simply delete the row of the participant from the excel list
+6. Send the link to the participant via email. Send the password via a separate, secure channel (i.e. WhatsApp, Signal, iMessage or snail mail).
 
 There is a sample mail available here: [mail template](https://github.com/CIMH-Clinical-Psychology/MRI-nextcloud-sharing/blob/main/sample_mail.txt)
