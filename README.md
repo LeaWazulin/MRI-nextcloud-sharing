@@ -9,41 +9,41 @@ You send the link to the NIFTI via mail and the password via a secure second cha
 ## preparation
 
 - clone this repository to your local machine
-- install the following via pip:  `pip install dicom2nifti wordfreq tqdm pyminizip` or use `pip install -r requirements.txt`
+- install the following via pip:  `pip install wordfreq tqdm pyminizip --trusted-host pypi.org --trusted-host files.pythonhosted.org ` or use `pip install -r requirements.txt`
 
   then enter your credentials into `credentials.json`
 
 PS: Best practice is to create an API [app password](https://help.nextcloud.com/t/where-to-create-app-password/157454/2) in the Nextcloud settings under "security". Don't store your actual user password in plain text on disc, only the app password.
 
 ```json
-   {"username": "username",         # user name for nextcloud
+   {"username": "firstname.lastname",         # user name for nextcloud
     "password": "password",         # password for the user
     "remote_path": "MRI-share",     # folder on nextcloud in which the files are uploaded. Needs to exist already.
     "expiration_days": 21,          # delete share after this time
     "include_mricron": true,        # include a program to view NIFTI files (Windows only)
-    "nextcloud_baseurl": "https://cloud.server.de"  # server URL
+    "nextcloud_baseurl": "https://cloud.zi-mannheim.de"  # server URL of ZI nextcloud
 ```
 
 ## data structure
 
-The script expects the the DICOMS to be in subfolders of a main folder, with each folder being named after the participant in question.
+The script expects BIDS data structure in the form of
 
 ```
 ├───mri_images
 │   ├───subj1
-│   │       mprage1.ima
-│   │       mprage2.ima
-│   │       mprage3.ima
+│   │       anat
+│   │         subj1_T1w.nii.gz
+│   │       func     
 │   │       ....
 │   ├───subj2
-│   │           ...
+│   │       anat
+│           func  
 │   └───subj3
-│   │           .....
-```
+
 
 ## usage
 
-1. run script via `python share_with_password.py` and select the folder that contains the DICOM folders (i.e. the folder above the actual DICOM images, not the folder containing the DICOM images themselves)
+1. run script via `python share_with_password.py` and select the folder of your BIDs data of all participants (i.e. the folder above the actual subject folders)
 2. The script will create random passwords and upload the files to nextcloud
 3. A `share-list.xlsx` will be created containing all the links and passwords.
 4. If you need to re-share a file, simply delete the row of the participant from the excel list
