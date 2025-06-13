@@ -118,6 +118,19 @@ if __name__ == '__main__':
 
         sharing_url = (res.split('<url>')[1]).split('</url>')[0]
         df.loc[subj] = [sharing_url, share_password, expire]
-        df.to_excel(xlsx)
+        
+        os.remove(output_zip)
+        os.remove(ini_file)
+        
+print("\nPlease choose a folder to save the share-list.xlsx file:")
+sharelist_folder = choose_folder(title='Select folder to save share-list.xlsx')
 
-    print(f'\n#############################\nLinks and passwords saved to {xlsx}')
+if sharelist_folder:
+    xlsx_out_path = os.path.join(sharelist_folder, 'share-list.xlsx')
+    df.to_excel(xlsx_out_path)
+    print(f'\n#############################\nLinks and passwords saved to {xlsx_out_path}')
+else:
+    print('\nNo folder selected. The share list was not saved.')
+
+    
+ 
