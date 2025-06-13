@@ -1,4 +1,3 @@
-dicom2nifti
 wordfreq
 tqdm
 pyminizip

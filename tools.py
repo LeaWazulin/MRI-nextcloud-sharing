@@ -16,7 +16,6 @@ from tkinter import  Tk
 import subprocess
 from wordfreq import top_n_list
 
-import dicom2nifti
 from datetime import datetime, timedelta
 
 
