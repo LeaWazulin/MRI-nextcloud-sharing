@@ -3,7 +3,7 @@
 """
 Refactored script for sharing BIDS-formatted anatomical NIfTI scans via Nextcloud.
 
-@author: simon, modified by Lea Wazulin
+@author: basis by Simon Kern, added BIDS functionality by Lea Wazulin
 """
 
 import sys
